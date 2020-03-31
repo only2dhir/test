@@ -3,12 +3,12 @@
 It's a spring boot based project with spring security integrated to provide role based authentication and authorisation.
 It uses JWT for token solution.
 
-* There are different packages such as controller, entity, service, dao, etc for each components.
+* There are seperate packages such as controller, entity, service, dao, etc for each components.
 * Individual controller class for User, Role, Auth and Resource entity.
 * com.locus.assignment.security has all the security related filters and configurations.
 * It has a generic global exception handler.
-* A global API response implementation.
-* Uses Facade pattern to get logged in user token anywhere in the service class.
+* A global REST API response implementation.
+* Uses Facade pattern to get logged in user token anywhere in the service classes.
 * JwtUtil.java has all the util methods for token.
 * Passwords in the DB are saved with Bcrypt hashing.
 * Different actuators endpoints for application health monitoring.
