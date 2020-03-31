@@ -50,10 +50,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         if(existingUser != null){
             throw new ApiException(HttpStatus.BAD_REQUEST.value(), String.format("Username %s already exists", userDto.getUsername()));
         }
-        User user = new User();
-        user.setName(userDto.getName());
-        user.setPassword(bcryptEncoder.encode(userDto.getPassword()));
-        user.setUsername(userDto.getUsername());
+        User user = new User(userDto.getName(), userDto.getUsername(), bcryptEncoder.encode(userDto.getPassword()));
 
         List<Role> roles = roleService.findRolesByIds(userDto.getRoles().stream().map(RoleDto::getId).collect(Collectors.toList()));
         if(ObjectUtils.isEmpty(roles) || roles.size() != userDto.getRoles().size()){

@@ -23,6 +23,14 @@ public class User extends BaseEntity{
             @JoinColumn(name = "ROLE_ID") })
     private Set<Role> roles;
 
+    public User(){
+
+    }
+
+    public User(String name, String username, String password){
+
+    }
+
     public String getName() {
         return name;
     }

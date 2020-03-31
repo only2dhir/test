@@ -28,14 +28,17 @@ public class ResourceServiceImpl implements ResourceService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ResourceServiceImpl.class);
 
-    @Autowired
-    private ResourceDao resourceDao;
+    private final ResourceDao resourceDao;
 
-    @Autowired
-    private AuthenticationFacadeService authenticationFacadeService;
+    private final AuthenticationFacadeService authenticationFacadeService;
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    public ResourceServiceImpl(ResourceDao resourceDao, AuthenticationFacadeService authenticationFacadeService, UserService userService) {
+        this.resourceDao = resourceDao;
+        this.authenticationFacadeService = authenticationFacadeService;
+        this.userService = userService;
+    }
 
     @Override
     public ResourceDto createResource(ResourceDto resourceDto) {
