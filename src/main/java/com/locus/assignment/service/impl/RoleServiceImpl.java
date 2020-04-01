@@ -37,7 +37,7 @@ public class RoleServiceImpl implements RoleService {
         }
         Role role = new Role(roleDto.getName(), roleDto.getDescription(), roleDto.getActionType());
         role.setDefaultOnCreate();
-        roleDao.save(role);
+        role = roleDao.save(role);
         roleDto.setId(role.getId());
         return roleDto;
     }
