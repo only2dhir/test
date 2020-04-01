@@ -3,7 +3,8 @@
 It's a spring boot based project with spring security integrated to provide role based authentication and authorisation.
 It uses JWT for token solution.
 
-* There are seperate packages such as controller, entity, service, dao, etc for each components.
+* There are separate packages such as controller, entity, service, dao, etc for each components.
+* Mockito test cases are covered under test packages.
 * Individual controller class for User, Role, Auth and Resource entity.
 * com.locus.assignment.security has all the security related filters and configurations.
 * It has a generic global exception handler.
