@@ -4,7 +4,6 @@ import com.locus.assignment.dao.ResourceDao;
 import com.locus.assignment.dto.ResourceDto;
 import com.locus.assignment.entity.Resource;
 import com.locus.assignment.exception.ApiException;
-import com.locus.assignment.service.AuthenticationFacadeService;
 import com.locus.assignment.service.impl.ResourceServiceImpl;
 import org.hibernate.exception.ConstraintViolationException;
 import org.junit.Test;
@@ -12,8 +11,6 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.mockito.stubbing.OngoingStubbing;
-
 import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
@@ -26,9 +23,6 @@ public class ResourceServiceTest {
 
     @Mock
     private ResourceDao resourceDao;
-
-    @Mock
-    private AuthenticationFacadeService authenticationFacadeService;
 
     @InjectMocks
     private ResourceServiceImpl resourceService;

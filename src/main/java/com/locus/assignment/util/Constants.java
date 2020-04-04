@@ -31,4 +31,5 @@ public class Constants {
     public static final String INVALID_USERNAME = "Invalid username.";
     public static final String ROLE_ = "ROLE_";
     public static final String INVALID_USER_ID = "Invalid user id";
+    public static final String NOT_AUTHORISED_ACCESS_RESOURCE = "You are not authorised to access this resource";
 }

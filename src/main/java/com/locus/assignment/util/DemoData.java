@@ -46,5 +46,6 @@ public class DemoData implements CommandLineRunner {
         user.setPassword(bCryptPasswordEncoder.encode("admin"));
         userDao.save(user);
         user.setRoles(roles);
+        userDao.save(user);
     }
 }

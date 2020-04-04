@@ -7,7 +7,6 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
@@ -15,6 +14,8 @@ import org.springframework.stereotype.Component;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
+
+import static com.locus.assignment.util.Constants.NOT_AUTHORISED_ACCESS_RESOURCE;
 
 @Aspect
 @Component
@@ -43,7 +44,7 @@ public class SecurityAspect {
             authorised = authentication.getAuthorities().stream().anyMatch(authority -> finalRoles.contains(authority.getAuthority()));
         }
         if (!authorised){
-            throw new ApiException(HttpStatus.UNAUTHORIZED.value(), "You are not authorised to access this resource");
+            throw new ApiException(HttpStatus.UNAUTHORIZED.value(), NOT_AUTHORISED_ACCESS_RESOURCE);
         }
         return null;
     }

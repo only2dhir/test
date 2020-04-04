@@ -7,6 +7,7 @@ It uses JWT for token solution.
 * Mockito test cases are covered under test packages.
 * Individual controller class for User, Role, Auth and Resource entity.
 * com.locus.assignment.security has all the security related filters and configurations.
+* #####Added custom annotation implementation for method level access control.
 * It has a generic global exception handler.
 * A global REST API response implementation.
 * Uses Facade pattern to get logged in user token anywhere in the service classes.
