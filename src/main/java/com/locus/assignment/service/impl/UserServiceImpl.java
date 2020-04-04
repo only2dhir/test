@@ -59,7 +59,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         user.setRoles(new HashSet<>(roles));
 
         user.setDefaultOnCreate();
-        userDao.save(user);
+        user = userDao.save(user);
         logger.info(String.format("User %s created successfully.", userDto.getUsername()));
         return generateUserCreateResponse(user);
     }

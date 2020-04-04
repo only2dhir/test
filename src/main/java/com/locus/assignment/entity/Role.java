@@ -1,6 +1,7 @@
 package com.locus.assignment.entity;
 
 import com.locus.assignment.dto.RoleDto;
+import org.springframework.util.ObjectUtils;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -73,7 +74,9 @@ public class Role extends BaseEntity{
         roleDto.setId(this.getId());
         roleDto.setActionType(this.actionType);
         roleDto.setName(this.name);
-        roleDto.setResources(this.resources.stream().map(Resource :: toResourceDto).collect(Collectors.toSet()));
+        if(!ObjectUtils.isEmpty(this.resources)) {
+            roleDto.setResources(this.resources.stream().map(Resource::toResourceDto).collect(Collectors.toSet()));
+        }
         return roleDto;
     }
 }
