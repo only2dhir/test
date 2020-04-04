@@ -1,5 +1,6 @@
 package com.locus.assignment.controller;
 
+import com.locus.assignment.annotation.Authorized;
 import com.locus.assignment.dto.RoleDto;
 import com.locus.assignment.dto.response.ApiResponse;
 import com.locus.assignment.exception.ApiException;
@@ -23,7 +24,7 @@ public class RoleController {
     @Autowired
     private RoleService roleService;
 
-    @Secured(ROLE_ADMIN)
+    @Authorized(role = {ROLE_ADMIN})
     @PostMapping
     public ApiResponse<RoleDto> create(@RequestBody RoleDto role){
         if(role.getName() == null || role.getActionType() == null){
@@ -34,7 +35,7 @@ public class RoleController {
         return new ApiResponse<>(HttpStatus.OK.value(), ROLE_CREATED_SUCCESSFULLY, role);
     }
 
-    @Secured(ROLE_ADMIN)
+    @Authorized(role = ROLE_ADMIN)
     @PutMapping("/{roleId}/assign/{resourceId}")
     public ApiResponse<RoleDto> assignResourceToRole(@PathVariable Integer roleId, @PathVariable Integer resourceId){
         logger.debug(String.format("Request to map resource %s to role %s", resourceId, roleId));

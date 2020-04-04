@@ -1,5 +1,6 @@
 package com.locus.assignment.controller;
 
+import com.locus.assignment.annotation.Authorized;
 import com.locus.assignment.dto.UserDto;
 import com.locus.assignment.dto.response.ApiResponse;
 import com.locus.assignment.exception.ApiException;
@@ -23,7 +24,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @Secured(ROLE_ADMIN)
+    @Authorized(role = ROLE_ADMIN)
     @PostMapping
     public ApiResponse<UserDto> create(@RequestBody UserDto userDto) {
         if (userDto.getUsername() == null || userDto.getPassword() == null) {
@@ -36,7 +37,7 @@ public class UserController {
         return new ApiResponse<>(HttpStatus.OK.value(), USER_CREATED, userResponse);
     }
 
-    @Secured(ROLE_ADMIN)
+    @Authorized(role = ROLE_ADMIN)
     @PutMapping
     public ApiResponse<UserDto> updateUserRoles(@RequestBody UserDto userDto) {
         if (userDto.getId() == null) {
@@ -46,14 +47,14 @@ public class UserController {
         return new ApiResponse<>(HttpStatus.OK.value(), USER_UPDATED_SUCCESS, userResponse);
     }
 
-    @Secured(ROLE_ADMIN)
+    @Authorized(role = ROLE_ADMIN)
     @DeleteMapping("/{userId}/role/{roleId}")
     public ApiResponse<UserDto> removeUserRole(@PathVariable Integer roleId, @PathVariable Integer userId) {
         UserDto userResponse = userService.removeUserRole(userId, roleId);
         return new ApiResponse<>(HttpStatus.OK.value(), USER_ROLE_REMOVED, userResponse);
     }
 
-    @Secured(ROLE_ADMIN)
+    @Authorized(role = ROLE_ADMIN)
     @PutMapping("/{userId}/role/{roleId}")
     public ApiResponse<UserDto> addUserRole(@PathVariable Integer roleId, @PathVariable Integer userId) {
         UserDto userResponse = userService.addUserRole(userId, roleId);
